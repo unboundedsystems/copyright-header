@@ -89,7 +89,7 @@ function collectFiles(fileFilter: FileFilter): ReadonlyArray<string> {
 
   const excludeRegexps = fileFilter.exclude.map(pattern => new RegExp(pattern));
   const excludeFilter = (filename: string) =>
-    includeRegexps.length === 0 || !excludeRegexps.some(regexp => regexp.test(filename));
+    excludeRegexps.length === 0 || !excludeRegexps.some(regexp => regexp.test(filename));
 
   return gitFiles
     .filter(includeFilter)
